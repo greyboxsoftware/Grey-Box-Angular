@@ -1,0 +1,108 @@
+<html>
+	<head>
+	
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	
+	</head>
+
+	<body ng-app="greyBox" class="container bodyColor">
+	<div ng-controller="mainController">
+	
+	<div class="row">
+	<div class="col-md-12">
+	<form class="animateForm" ng-hide="hideForm">
+	<p class="width100 text-center formPadding">What is your name?</p> 
+	<input class="width100 text-center" ng-model="first"><br>
+	<p class="width100 text-center formPadding">Click below to acknowledge that the syntax in this list is not a complete list. </p>
+	<p class="width100 text-center formPadding" >I acknowledge <input type="checkbox" ng-model="hideForm" ng-click="showHeader=true;" ></p>
+	</form>
+	</div>
+	</div>
+	<div class="row" ng-show="showHeader">
+	<h2 class="text-center">Welcome to Basic Syntax for PowerShell {{first}}</h2>
+	
+	<button class="text-center width100 buttonPadding button" ng-click="comments()">Comments</button>
+	<p class="betweenButtonPadding"></p>
+	
+	<p ng-show="showComments">Comments are essential in programming not only for you if you are creating a long script and don't want 
+	to forget what you did or if you are transferring the script to someone else. Comments are great and a absolute essential. 
+	Comments are simple and they are lines followed by <br><br>
+	#
+	<br><br>
+	#I am a comment<br>
+	#This is another comment </p>
+	
+	<button class="text-center width100 buttonPadding button" ng-click="variables()">Variables</button>
+	<p class="betweenButtonPadding"></p>
+	
+	<p ng-show="showVariables">
+	
+	Software would be almost useless without variables. If you are a programmer then you will use variables in everyday life. In
+	PowerShell variables are really really easy and when I say that it means that PowerShell doesnt require you to specify type
+	of variable i.e. Int, String, Double, etc...<br><br>
+	All variables in PowerShell start with the "$" character. 
+	<br><br>
+	$variableHere = "I am a variable and a string"
+	<br>
+	$variableNumber = 4
+	<br><br>
+	Variable do not have to be declared as a specific type in PowerShell. </p>
+	
+	
+	<button class="text-center width100 buttonPadding button" ng-click="connections()">Test-Connection</button>
+	<p class="betweenButtonPadding"></p>
+	
+	<p ng-show="showConnections">
+	
+		For every beloved DOS command there is a PowerShell command that does it better and in this case the ping command
+		is replaced by Test-Connection. This is very simple and you can do alot but a basic example is as follows. 
+		<br><br>
+		Test-Connection -ComputerName www.google.com -Count 1
+		
+	
+	</p>
+	
+	
+	<button class="text-center width100 buttonPadding">Get-WmiObject</button>
+
+	</div>
+	</div>
+	
+	<script>
+	var greyBox = angular.module('greyBox', ['ngAnimate']);
+	
+	greyBox.controller('mainController', function($scope) {
+		$scope.first="";
+		$scope.showHeader = false;
+		$scope.showComments = false;
+		$scope.showVariables = false;
+		$scope.showConnections = false;
+		
+		$scope.comments = function() {
+			$scope.showComments = !$scope.showComments;
+		};
+		
+		$scope.variables = function () {
+			$scope.showVariables = !$scope.showVariables;
+		};
+		
+		$scope.connections = function () {
+			$scope.showConnections = !$scope.showConnections;
+		};
+	});
+	</script>
+
+
+	</body>
+</html>
