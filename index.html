@@ -1,0 +1,76 @@
+<html>
+	<head>
+	
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	<style>
+	form {
+	transition: all linear 0.3s;
+	height: 100%;
+	width: 100%;
+
+	position: relative;
+}
+
+.ng-hide {
+  height: 0;
+  width: 0;
+  background-color: transparent;
+ 
+}
+
+.width100 {
+	width:100%;
+	
+}
+
+.formPadding {
+	padding-top: 5px;
+}
+</style>
+	</head>
+
+	<body ng-app="greyBox" class="container">
+	<div ng-controller="mainController">
+	
+	<div class="row">
+	<div class="col-md-12">
+	<form class="animateForm" ng-hide="hideForm">
+	<p class="width100 text-center formPadding">First Name</p> 
+	<input class="width100 text-center" ng-model="first"><br>
+	<p class="width100 text-center formPadding">Last Name</p> 
+	<input class="width100 text-center" ng-model="last"><br>
+	<p class="width100 text-center formPadding" >Continue <input type="checkbox" ng-model="hideForm" ng-click="showHeader=true;" ></p>
+	</form>
+	</div>
+	</div>
+	<div class="row" ng-show="showHeader">
+	<h2 class="text-center">Welcome to Grey Box Software Solutions {{first}}</h2>
+	
+	
+	</div>
+	</div>
+	
+	<script>
+	var greyBox = angular.module('greyBox', ['ngAnimate']);
+	
+	greyBox.controller('mainController', function($scope) {
+		$scope.first="";
+		$scope.last="";
+		$scope.showHeader = false;
+	});
+	</script>
+
+
+	</body>
+</html>
