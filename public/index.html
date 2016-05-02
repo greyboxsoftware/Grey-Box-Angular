@@ -22,20 +22,25 @@
 	<div class="row">
 	<div class="col-md-12">
 	<form class="animateForm" ng-hide="hideForm">
+	<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello my name is Kevin Johnson the owner of Grey Box Software Solutions and I want to welcome you to my PowerShell
+	quick reference page. To be completly honest, I didnt make this page to display detailed information on PowerShell syntax
+	instead this is mostly to showcase AngularJS in my portfolio. If you are interested in learning about PowerShell I highly
+	encourage you to visit my <a class="aColor" href="http://www.greyboxsoftwaresolutions.com">website</a>.</h2>
+	<h2 class="text-center">This demo site is built using AngularJS</h2>
 	<p class="width100 text-center formPadding">What is your name?</p> 
 	<input class="width100 text-center" ng-model="first"><br>
-	<p class="width100 text-center formPadding">Click below to acknowledge that the syntax in this list is not a complete list. </p>
-	<p class="width100 text-center formPadding" >I acknowledge <input type="checkbox" ng-model="hideForm" ng-click="showHeader=true;" ></p>
+	<p class="width100 text-center formPadding" ng-hide="!first.length">Click below to acknowledge that the syntax in this list is not a complete list. </p>
+	<p class="width100 text-center formPadding" ng-hide="!first.length" >I acknowledge <input type="checkbox" ng-model="hideForm" ng-click="showHeader=true;" ></p>
 	</form>
 	</div>
 	</div>
 	<div class="row" ng-show="showHeader">
 	<h2 class="text-center">Welcome to Basic Syntax for PowerShell {{first}}</h2>
 	
-	<button class="text-center width100 buttonPadding button" ng-click="comments()">Comments</button>
+	<button class="text-center width100 buttonPadding button" ng-click="comments()"><h2>Comments</h2></button>
 	<p class="betweenButtonPadding"></p>
 	
-	<p ng-show="showComments">Comments are essential in programming not only for you if you are creating a long script and don't want 
+	<p ng-show="showComments">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comments are essential in programming not only for you if you are creating a long script and don't want 
 	to forget what you did or if you are transferring the script to someone else. Comments are great and a absolute essential. 
 	Comments are simple and they are lines followed by <br><br>
 	#
@@ -43,12 +48,12 @@
 	#I am a comment<br>
 	#This is another comment </p>
 	
-	<button class="text-center width100 buttonPadding button" ng-click="variables()">Variables</button>
+	<button class="text-center width100 buttonPadding button" ng-click="variables()"><h2>Variables</h2></button>
 	<p class="betweenButtonPadding"></p>
 	
 	<p ng-show="showVariables">
 	
-	Software would be almost useless without variables. If you are a programmer then you will use variables in everyday life. In
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software would be almost useless without variables. If you are a programmer then you will use variables in everyday life. In
 	PowerShell variables are really really easy and when I say that it means that PowerShell doesnt require you to specify type
 	of variable i.e. Int, String, Double, etc...<br><br>
 	All variables in PowerShell start with the "$" character. 
@@ -60,12 +65,12 @@
 	Variable do not have to be declared as a specific type in PowerShell. </p>
 	
 	
-	<button class="text-center width100 buttonPadding button" ng-click="connections()">Test-Connection</button>
+	<button class="text-center width100 buttonPadding button" ng-click="connections()"><h2>Test-Connection</h2></button>
 	<p class="betweenButtonPadding"></p>
 	
 	<p ng-show="showConnections">
 	
-		For every beloved DOS command there is a PowerShell command that does it better and in this case the ping command
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For every beloved DOS command there is a PowerShell command that does it better and in this case the ping command
 		is replaced by Test-Connection. This is very simple and you can do alot but a basic example is as follows. 
 		<br><br>
 		Test-Connection -ComputerName www.google.com -Count 1
@@ -74,8 +79,38 @@
 	</p>
 	
 	
-	<button class="text-center width100 buttonPadding">Get-WmiObject</button>
+	<button class="text-center width100 button buttonPadding" ng-click="wmiobject()"><h2>Get-WmiObject</h2></button>
+		<p class="betweenButtonPadding"></p>
+		<p ng-show="showwmiobjects">
+	
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WMI .... if you ever been a system or network admin then I am sure you have colorful words to say about WMI in Windows systems.
+		If you like I will wait while you cuss a little bit ............. okay we are back, feel better? PowerShell tries to 
+		make WMI a little bit easier. In this example we will list installed programs on a remote machine
+		<br><br>
+		Get-WmiObject -ComputerName COMP-Example -Class Win32_Product. 
+		<br><br>
+		Now sit back and wait and prepare for your console window to blow up ... metaphorically of course. :) 
+		
+	
+	</p>
+	
+	<button class="text-center width100 button buttonPadding" ng-click="learnMore()"><h2>Learn More</h2></button>
+	<p class="betweenButtonPadding"></p>
 
+	<p ng-show="showLearnMore">
+	
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you would like to learn more about PowerShell scripting then there is a website that breaks down everything
+		there is to know about PowerShell and that is the <a href="https://blogs.technet.microsoft.com/heyscriptingguy/">
+		Hey, Scripting Guy! Blog"</a>. This blog is a great place to start if you are just now beginning. 
+		<br><br>
+		However I would be remissed if I did not mention my <a href="http://www.greyboxsoftwaresolutions.com/category/tips-tricks-how-to/powershell-scripting/"
+		>PowerShell Blog</a>. My blog differs from the aforementioned blog due to the fact I post problems that I have had and tell you 
+		how I remediated them. 
+		
+	
+	</p>
+	
+	
 	</div>
 	</div>
 	
@@ -88,6 +123,8 @@
 		$scope.showComments = false;
 		$scope.showVariables = false;
 		$scope.showConnections = false;
+		$scope.showwmiobjects = false;
+		$scope.showLearnMore = false;
 		
 		$scope.comments = function() {
 			$scope.showComments = !$scope.showComments;
@@ -100,9 +137,23 @@
 		$scope.connections = function () {
 			$scope.showConnections = !$scope.showConnections;
 		};
+		
+		$scope.wmiobject = function () {
+			$scope.showwmiobjects = !$scope.showwmiobjects;
+		}
+		
+		$scope.learnMore = function () {
+			$scope.showLearnMore = !$scope.showLearnMore;
+		}
 	});
 	</script>
 
 
 	</body>
+	
+	<footer>
+		<p class="text-center"><a href="http://www.greyboxsoftwaresolutions.com">2016 Grey Box Software Solutions</a></p>
+	</footer>
+	
+	
 </html>
