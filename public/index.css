@@ -1,12 +1,13 @@
 .bodyColor {
 	background: url(http://www.cheynewallace.com/wp-content/uploads/2013/12/AngularJS_Banner.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
 	font-family: 'Arvo', serif;
 	font-size: 18px;
 	margin-bottom: 5%;
+	padding:10px;
 }
 
 
